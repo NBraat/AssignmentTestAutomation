@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  assignmet-test-automation:
+    build: .
+    container_name: assignment-test-automation
+    restart: unless-stopped
+    network_mode: web
+
+networks:
+  web:
+    external: true

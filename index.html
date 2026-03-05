@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrenPortaal</title>
+
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#EBB446', light: '#F3CA7A', dark: '#D4992B' },
+                        secondary: { DEFAULT: '#2C516D', light: '#3D6D8F', dark: '#1E3A4F' },
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- React 18 (UMD) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel Standalone (JSX transform) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.25s ease forwards;
+        }
+
+        #root:empty::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: #2C516D;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 antialiased">
+    <div id="root"></div>
+
+    <!-- 1. Pure JavaScript — werkt ook via file:// -->
+    <script src="src/constants.js?v=2"></script>
+    <script src="src/data/defaults.js?v=2"></script>
+    <script src="src/utils/cookie.js?v=2"></script>
+    <script src="src/data/store.js?v=2"></script>
+    <script src="src/utils/router.js?v=2"></script>
+
+    <!-- 2. Babel / JSX — vereist een lokale HTTP-server (./start.sh) -->
+    <script type="text/babel" src="src/context/AuthContext.jsx?v=2"></script>
+    <script type="text/babel" src="src/context/ToastContext.jsx?v=2"></script>
+
+    <script type="text/babel" src="src/components/Badge.jsx?v=2"></script>
+    <script type="text/babel" src="src/components/Button.jsx?v=2"></script>
+    <script type="text/babel" src="src/components/Fields.jsx?v=2"></script>
+    <script type="text/babel" src="src/components/Modal.jsx?v=2"></script>
+    <script type="text/babel" src="src/components/Card.jsx?v=2"></script>
+    <script type="text/babel" src="src/components/Layout.jsx?v=2"></script>
+
+    <script type="text/babel" src="src/pages/LoginPage.jsx?v=2"></script>
+    <script type="text/babel" src="src/pages/DashboardPage.jsx?v=2"></script>
+    <script type="text/babel" src="src/pages/HoursPage.jsx?v=2"></script>
+    <script type="text/babel" src="src/pages/ApprovalPage.jsx?v=2"></script>
+    <script type="text/babel" src="src/pages/ReportsPage.jsx?v=2"></script>
+    <script type="text/babel" src="src/pages/AdminUsersPage.jsx?v=2"></script>
+
+    <script type="text/babel" src="src/App.jsx?v=2"></script>
+    <script type="text/babel" src="src/main.jsx?v=2"></script>
+</body>
+
+</html>
