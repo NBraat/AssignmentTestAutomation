@@ -157,7 +157,18 @@ var DashboardPage = () => {
                                             {entry.taakomschrijving && ` · ${entry.taakomschrijving.slice(0, 50)}${entry.taakomschrijving.length > 50 ? '…' : ''}`}
                                         </p>
                                     </div>
-                                    <div className="flex-shrink-0">
+                                    <div className="flex items-center gap-2 flex-shrink-0">
+                                        {entry.status === STATUS.CONCEPT && entry.userId === currentUser.id && (
+                                            <button
+                                                onClick={() => { store.setPendingEdit(entry.id); navigate('/hours'); }}
+                                                className="text-gray-400 hover:text-primary transition-colors p-1.5 rounded-lg hover:bg-primary/10"
+                                                title="Bewerken"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                            </button>
+                                        )}
                                         <Badge status={entry.status} />
                                     </div>
                                 </div>

@@ -17,6 +17,28 @@ var HoursPage = () => {
     const [search, setSearch] = React.useState('');
 
     const refresh = () => { };  // entries lezen we altijd live uit store
+
+    // ── Auto-bewerken via dashboard shortcut
+    React.useEffect(() => {
+        const pendingId = store.getPendingEdit();
+        if (pendingId) {
+            store.clearPendingEdit();
+            const all = store.getEntries();
+            const entry = all.find(e => e.id === pendingId);
+            if (entry) {
+                setEditId(entry.id);
+                setForm({
+                    datum: entry.datum,
+                    projectcode: entry.projectcode,
+                    projectnaam: entry.projectnaam,
+                    taakomschrijving: entry.taakomschrijving || '',
+                    uren: String(entry.uren),
+                    notitie: entry.notitie || '',
+                });
+            }
+        }
+    }, []);
+
     const allEntries = store.getEntries();
     const entries = isAdmin
         ? allEntries

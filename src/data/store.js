@@ -8,6 +8,9 @@ var store = {
     setUsers: (u) => localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(u)),
     getEntries: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.ENTRIES) || '[]'),
     setEntries: (e) => localStorage.setItem(STORAGE_KEYS.ENTRIES, JSON.stringify(e)),
+    getPendingEdit: () => localStorage.getItem('pendingEditId') || null,
+    setPendingEdit: (id) => localStorage.setItem('pendingEditId', id),
+    clearPendingEdit: () => localStorage.removeItem('pendingEditId'),
 
     init() {
         const stored = this.getUsers();
