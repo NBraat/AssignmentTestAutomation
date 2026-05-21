@@ -1,12 +1,18 @@
 // ═══════════════════════════════════════════════════════════════
 // AUTH CONTEXT
-// var → globaal beschikbaar voor andere Babel-scripts
 // ═══════════════════════════════════════════════════════════════
 
-var AuthContext = React.createContext(null);
+import React, { createContext, useState, useContext } from 'react';
+import { getCookie, setCookie, deleteCookie } from '../utils/cookie';
+import { SESSION_COOKIE } from '../constants';
+import { navigate } from '../utils/router';
+import store from '../data/store';
+import { DEFAULT_USERS } from '../data/defaults';
 
-var AuthProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = React.useState(() => getCookie(SESSION_COOKIE));
+const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+    const [currentUser, setCurrentUser] = useState(() => getCookie(SESSION_COOKIE));
 
     const login = (email, password) => {
         let users = store.getUsers() || DEFAULT_USERS;
@@ -41,4 +47,4 @@ var AuthProvider = ({ children }) => {
     );
 };
 
-var useAuth = () => React.useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);

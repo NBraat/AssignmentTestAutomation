@@ -1,12 +1,21 @@
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { navigate } from '../utils/router';
+import { Input } from '../components/Fields';
+import Button from '../components/Button';
+import { RoleBadge } from '../components/Badge';
+import { ROLES } from '../constants';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: LOGIN
 // ═══════════════════════════════════════════════════════════════
 
-var LoginPage = () => {
+const LoginPage = () => {
     const { login } = useAuth();
-    const [form, setForm] = React.useState({ email: '', password: '' });
-    const [error, setError] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
+    const [form, setForm] = useState({ email: '', password: '' });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -112,3 +121,4 @@ var LoginPage = () => {
         </div>
     );
 };
+export default LoginPage;

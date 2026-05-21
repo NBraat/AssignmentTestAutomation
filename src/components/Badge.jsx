@@ -2,6 +2,8 @@
 // BADGE COMPONENTEN  —  Badge (status) + RoleBadge (rol)
 // ═══════════════════════════════════════════════════════════════
 
+import React from 'react';
+
 const statusConfig = {
     concept: { label: 'Concept', cls: 'bg-gray-100 text-gray-600' },
     ingediend: { label: 'Ingediend', cls: 'bg-blue-100 text-blue-700' },
@@ -9,7 +11,7 @@ const statusConfig = {
     afgekeurd: { label: 'Afgekeurd', cls: 'bg-red-100 text-red-700' },
 };
 
-var Badge = ({ status }) => {
+export const Badge = ({ status }) => {
     const { label, cls } = statusConfig[status] || { label: status, cls: 'bg-gray-100 text-gray-600' };
     return (
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${cls}`}>
@@ -24,7 +26,7 @@ const roleConfig = {
     gebruiker: { label: 'Gebruiker', cls: 'bg-gray-100 text-gray-600' },
 };
 
-var RoleBadge = ({ role }) => {
+export const RoleBadge = ({ role }) => {
     const { label, cls } = roleConfig[role] || { label: role, cls: 'bg-gray-100 text-gray-600' };
     return (
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${cls}`}>

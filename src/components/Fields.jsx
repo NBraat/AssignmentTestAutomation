@@ -2,10 +2,11 @@
 // FORMULIERVELDEN  —  Input · Textarea · Select
 // ═══════════════════════════════════════════════════════════════
 
-// fieldBase ook globaal beschikbaar als andere bestanden het ooit nodig hebben
-var fieldBase = 'w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors';
+import React from 'react';
 
-var Input = ({ label, error, hint, className = '', ...props }) => (
+const fieldBase = 'w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors';
+
+export const Input = ({ label, error, hint, className = '', ...props }) => (
     <div className={className}>
         {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
         <input
@@ -19,7 +20,7 @@ var Input = ({ label, error, hint, className = '', ...props }) => (
     </div>
 );
 
-var Textarea = ({ label, error, rows = 3, className = '', ...props }) => (
+export const Textarea = ({ label, error, rows = 3, className = '', ...props }) => (
     <div className={className}>
         {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
         <textarea
@@ -33,7 +34,7 @@ var Textarea = ({ label, error, rows = 3, className = '', ...props }) => (
     </div>
 );
 
-var Select = ({ label, error, children, options, className = '', ...props }) => (
+export const Select = ({ label, error, children, options, className = '', ...props }) => (
     <div className={className}>
         {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
         <select

@@ -2,7 +2,10 @@
 // MODAL COMPONENTEN  —  Modal (generiek) + ConfirmModal
 // ═══════════════════════════════════════════════════════════════
 
-var Modal = ({ open, onClose, title, children, footer }) => {
+import React from 'react';
+import Button from './Button';
+
+export const Modal = ({ open, onClose, title, children, footer }) => {
     if (!open) return null;
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -35,7 +38,7 @@ var Modal = ({ open, onClose, title, children, footer }) => {
     );
 };
 
-var ConfirmModal = ({
+export const ConfirmModal = ({
     open,
     onClose,
     onConfirm,

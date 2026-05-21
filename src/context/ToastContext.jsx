@@ -2,12 +2,14 @@
 // TOAST CONTEXT
 // ═══════════════════════════════════════════════════════════════
 
-var ToastContext = React.createContext(null);
+import React, { createContext, useState, useCallback, useContext } from 'react';
 
-var ToastProvider = ({ children }) => {
-    const [toasts, setToasts] = React.useState([]);
+const ToastContext = createContext(null);
 
-    const addToast = React.useCallback((message, type = 'info') => {
+export const ToastProvider = ({ children }) => {
+    const [toasts, setToasts] = useState([]);
+
+    const addToast = useCallback((message, type = 'info') => {
         const id = Date.now() + Math.random();
         setToasts(prev => [...prev, { id, message, type }]);
         setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 4000);
@@ -35,4 +37,4 @@ var ToastProvider = ({ children }) => {
     );
 };
 
-var useToast = () => React.useContext(ToastContext);
+export const useToast = () => useContext(ToastContext);

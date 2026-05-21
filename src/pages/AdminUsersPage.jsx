@@ -1,15 +1,28 @@
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
+import { Card, CardHeader } from '../components/Card';
+import { RoleBadge } from '../components/Badge';
+import { Input, Select } from '../components/Fields';
+import Button from '../components/Button';
+import { ConfirmModal } from '../components/Modal';
+import store from '../data/store';
+import { ROLES } from '../constants';
+import { DEFAULT_USERS } from '../data/defaults';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: GEBRUIKERSBEHEER (admin)
 // ═══════════════════════════════════════════════════════════════
 
-var AdminUsersPage = () => {
+const AdminUsersPage = () => {
     const { currentUser, logout } = useAuth();
     const { addToast } = useToast();
 
     const emptyForm = { name: '', email: '', password: '', role: ROLES.GEBRUIKER };
-    const [form, setForm] = React.useState(emptyForm);
-    const [deleteModal, setDeleteModal] = React.useState(null);
-    const [creating, setCreating] = React.useState(false);
+    const [form, setForm] = useState(emptyForm);
+    const [deleteModal, setDeleteModal] = useState(null);
+    const [creating, setCreating] = useState(false);
 
     const users = store.getUsers() || DEFAULT_USERS;
 
@@ -172,3 +185,4 @@ var AdminUsersPage = () => {
         </div>
     );
 };
+export default AdminUsersPage;

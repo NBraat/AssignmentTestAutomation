@@ -2,7 +2,14 @@
 // MAIN — rendert de root React boom
 // ═══════════════════════════════════════════════════════════════
 
-var Root = () => (
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
+
+const Root = () => (
     <AuthProvider>
         <ToastProvider>
             <App />

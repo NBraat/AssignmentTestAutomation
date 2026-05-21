@@ -2,6 +2,11 @@
 // SIDEBAR NAVIGATIE CONFIG (per rol)
 // ═══════════════════════════════════════════════════════════════
 
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { RoleBadge } from './Badge';
+import { ROLES } from '../constants';
+
 const NAV = {
     [ROLES.ADMIN]: [
         {
@@ -55,10 +60,10 @@ const NAV = {
 // LAYOUT  —  sidebar + topbar wrapper
 // ═══════════════════════════════════════════════════════════════
 
-var Layout = ({ children, currentPath }) => {
+const Layout = ({ children, currentPath }) => {
     const { currentUser, logout } = useAuth();
     const navItems = NAV[currentUser?.role] || [];
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const pageTitle = navItems.find(n => n.path === currentPath)?.label || 'UrenPortaal';
 
     return (
@@ -170,3 +175,5 @@ var Layout = ({ children, currentPath }) => {
         </div>
     );
 };
+
+export default Layout;

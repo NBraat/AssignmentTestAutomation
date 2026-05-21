@@ -1,13 +1,25 @@
+import React, { useState } from 'react';
+import { useToast } from '../context/ToastContext';
+import { Card, CardHeader } from '../components/Card';
+import { Badge } from '../components/Badge';
+import Button from '../components/Button';
+import { Modal, ConfirmModal } from '../components/Modal';
+import { Textarea } from '../components/Fields';
+import store from '../data/store';
+import { STATUS } from '../constants';
+import { DEFAULT_USERS } from '../data/defaults';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: GOEDKEURING (manager)
 // ═══════════════════════════════════════════════════════════════
 
-var ApprovalPage = () => {
+const ApprovalPage = () => {
     const { addToast } = useToast();
-    const [rejectModal, setRejectModal] = React.useState(null); // entry id
-    const [rejectNote, setRejectNote] = React.useState('');
-    const [approveModal, setApproveModal] = React.useState(null); // entry id
-    const [tab, setTab] = React.useState('pending'); // 'pending' | 'reviewed'
+    const [rejectModal, setRejectModal] = useState(null); // entry id
+    const [rejectNote, setRejectNote] = useState('');
+    const [approveModal, setApproveModal] = useState(null); // entry id
+    const [tab, setTab] = useState('pending'); // 'pending' | 'reviewed'
 
     const allEntries = store.getEntries();
     const allUsers = store.getUsers() || DEFAULT_USERS;
@@ -223,3 +235,4 @@ var ApprovalPage = () => {
         </div>
     );
 };
+export default ApprovalPage;

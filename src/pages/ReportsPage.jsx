@@ -1,8 +1,16 @@
+import React from 'react';
+import { Card, CardHeader } from '../components/Card';
+import { Badge, RoleBadge } from '../components/Badge';
+import store from '../data/store';
+import { STATUS } from '../constants';
+import { DEFAULT_USERS } from '../data/defaults';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: RAPPORTAGES (manager – placeholder)
 // ═══════════════════════════════════════════════════════════════
 
-var ReportsPage = () => {
+const ReportsPage = () => {
     const allEntries = store.getEntries();
     const allUsers = store.getUsers() || DEFAULT_USERS;
 
@@ -158,3 +166,4 @@ var ReportsPage = () => {
         </div>
     );
 };
+export default ReportsPage;

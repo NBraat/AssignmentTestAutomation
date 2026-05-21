@@ -1,22 +1,21 @@
 // ═══════════════════════════════════════════════════════════════
 // HASH-GEBASEERDE ROUTER
-// Geen JSX — werkt ook via file://
-// Afhankelijk van: React (window.React)
 // ═══════════════════════════════════════════════════════════════
 
-var getPath = () => {
+import { useState, useEffect } from 'react';
+
+const getPath = () => {
     const h = window.location.hash;
     return h ? h.slice(1) : '/login';
 };
 
-var navigate = (path) => {
+export const navigate = (path) => {
     window.location.hash = path;
 };
 
-// React hook — mag gebruikt worden in .jsx bestanden
-var useRoute = () => {
-    const [path, setPath] = React.useState(getPath);
-    React.useEffect(() => {
+export const useRoute = () => {
+    const [path, setPath] = useState(getPath);
+    useEffect(() => {
         const handler = () => setPath(getPath());
         window.addEventListener('hashchange', handler);
         return () => window.removeEventListener('hashchange', handler);

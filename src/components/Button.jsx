@@ -3,7 +3,9 @@
 // Varianten: primary | secondary | outline | danger | success | ghost
 // ═══════════════════════════════════════════════════════════════
 
-var Button = ({
+import React from 'react';
+
+const Button = ({
     children,
     variant = 'primary',
     size = 'md',
@@ -44,3 +46,5 @@ var Button = ({
         </button>
     );
 };
+
+export default Button;

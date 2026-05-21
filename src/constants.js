@@ -1,22 +1,21 @@
 // ═══════════════════════════════════════════════════════════════
 // CONSTANTS
-// Globaal beschikbaar via var — geen import/export nodig
 // ═══════════════════════════════════════════════════════════════
 
-var STORAGE_KEYS = {
+export const STORAGE_KEYS = {
     USERS: 'uren_users',
     ENTRIES: 'uren_entries',
 };
 
-var SESSION_COOKIE = 'uren_session';
+export const SESSION_COOKIE = 'uren_session';
 
-var ROLES = {
+export const ROLES = {
     ADMIN: 'admin',
     MANAGER: 'manager',
     GEBRUIKER: 'gebruiker',
 };
 
-var STATUS = {
+export const STATUS = {
     CONCEPT: 'concept',
     INGEDIEND: 'ingediend',
     GOEDGEKEURD: 'goedgekeurd',

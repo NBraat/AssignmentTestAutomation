@@ -1,8 +1,19 @@
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
+import { navigate } from '../utils/router';
+import { Card, CardHeader } from '../components/Card';
+import { Badge } from '../components/Badge';
+import Button from '../components/Button';
+import store from '../data/store';
+import { ROLES, STATUS } from '../constants';
+import { DEFAULT_USERS } from '../data/defaults';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: DASHBOARD
 // ═══════════════════════════════════════════════════════════════
 
-var DashboardPage = () => {
+const DashboardPage = () => {
     const { currentUser } = useAuth();
     const entries = store.getEntries();
     const users = store.getUsers() || DEFAULT_USERS;
@@ -180,3 +191,4 @@ var DashboardPage = () => {
         </div>
     );
 };
+export default DashboardPage;

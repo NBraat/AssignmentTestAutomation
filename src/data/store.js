@@ -1,9 +1,12 @@
 // ═══════════════════════════════════════════════════════════════
 // LOCALSTORAGE STORE
-// Afhankelijk van: constants.js, defaults.js, cookie.js
 // ═══════════════════════════════════════════════════════════════
 
-var store = {
+import { STORAGE_KEYS, SESSION_COOKIE } from '../constants';
+import { DEFAULT_USERS, DEFAULT_ENTRIES } from './defaults';
+import { deleteCookie } from '../utils/cookie';
+
+const store = {
     getUsers: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || 'null'),
     setUsers: (u) => localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(u)),
     getEntries: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.ENTRIES) || '[]'),
@@ -33,3 +36,5 @@ var store = {
 
 // Initialiseer bij opstarten
 store.init();
+
+export default store;

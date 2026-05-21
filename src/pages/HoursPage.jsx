@@ -1,25 +1,38 @@
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
+import { Card, CardHeader } from '../components/Card';
+import { Badge } from '../components/Badge';
+import { Input, Textarea, Select } from '../components/Fields';
+import Button from '../components/Button';
+import { Modal, ConfirmModal } from '../components/Modal';
+import store from '../data/store';
+import { ROLES, STATUS } from '../constants';
+import { DEFAULT_USERS } from '../data/defaults';
+
+
 // ═══════════════════════════════════════════════════════════════
 // PAGINA: URENREGISTRATIE
 // ═══════════════════════════════════════════════════════════════
 
-var HoursPage = () => {
+const HoursPage = () => {
     const { currentUser } = useAuth();
     const { addToast } = useToast();
     const isAdmin = currentUser.role === ROLES.ADMIN;
 
     const emptyForm = { datum: '', projectcode: '', projectnaam: '', taakomschrijving: '', uren: '', notitie: '' };
-    const [form, setForm] = React.useState(emptyForm);
-    const [errors, setErrors] = React.useState({});
-    const [editId, setEditId] = React.useState(null);
-    const [submitModal, setSubmitModal] = React.useState(false);
-    const [deleteModal, setDeleteModal] = React.useState(null);
-    const [filterStatus, setFilterStatus] = React.useState('all');
-    const [search, setSearch] = React.useState('');
+    const [form, setForm] = useState(emptyForm);
+    const [errors, setErrors] = useState({});
+    const [editId, setEditId] = useState(null);
+    const [submitModal, setSubmitModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(null);
+    const [filterStatus, setFilterStatus] = useState('all');
+    const [search, setSearch] = useState('');
 
     const refresh = () => { };  // entries lezen we altijd live uit store
 
     // ── Auto-bewerken via dashboard shortcut
-    React.useEffect(() => {
+    useEffect(() => {
         const pendingId = store.getPendingEdit();
         if (pendingId) {
             store.clearPendingEdit();
@@ -382,3 +395,4 @@ var HoursPage = () => {
         </div>
     );
 };
+export default HoursPage;
